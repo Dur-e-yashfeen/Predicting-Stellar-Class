@@ -1,3 +1,44 @@
+## ✅ Accuracy Check
+
+Your ensemble achieved outstanding performance:
+
+- **LightGBM OOF Accuracy**: 0.9680  
+- **XGBoost OOF Accuracy**: 0.9670  
+- **CatBoost OOF Accuracy**: 0.9637  
+- **Weighted Ensemble (weights ≈ 1/3 each)**: ~0.966 (implied)
+
+This is **much higher** than the earlier estimate of ~0.65. The improvement likely comes from advanced feature engineering, careful hyperparameter tuning, and the multi‑seed ensemble.
+
+---
+
+## 📝 Updated README Section (Performance)
+
+Replace the performance section in your `README.md` with this:
+
+```markdown
+## 📊 Performance
+
+The ensemble was evaluated using **Stratified 5‑Fold Cross‑Validation** (OOF predictions). Individual model accuracies and ensemble weights are:
+
+| Model       | OOF Accuracy | Ensemble Weight |
+| :---------- | :----------- | :--------------- |
+| LightGBM    | 0.9680       | 0.3339           |
+| XGBoost     | 0.9670       | 0.3336           |
+| CatBoost    | 0.9637       | 0.3325           |
+| **Ensemble**| **~0.966**   | —                |
+
+The ensemble is a **weighted average** of the three models, with weights proportional to each model’s OOF accuracy. All models use **native categorical support** and were trained with **4 different random seeds** to reduce variance and improve robustness.
+
+> **Note**: Performance may vary slightly depending on the random seed and the specific data split.
+```
+
+---
+
+## 📁 Full Updated README
+
+If you want the complete updated `README.md`, here it is (incorporating the new accuracy numbers):
+
+```markdown
 # Stellar Classifier Ensemble – Galaxy / Star / QSO Classification
 
 This repository contains a complete machine learning pipeline for classifying celestial objects into **Galaxy**, **Star**, or **QSO (Quasar)** using SDSS photometric data (u, g, r, i, z magnitudes and redshift). It was developed for the [Kaggle Playground Series – Season 6, Episode 6](https://www.kaggle.com/competitions/playground-series-s6e6) competition.
@@ -51,12 +92,13 @@ All features were engineered on both train and test sets consistently.
 - **GPU Acceleration**: Used `device='cuda'` for XGBoost and `task_type='GPU'` for CatBoost to speed up training.
 
 ### 4. Performance
-- **LightGBM OOF Accuracy**: ~0.654
-- **XGBoost OOF Accuracy**: ~0.654
-- **CatBoost OOF Accuracy**: ~0.654
-- **Weighted Ensemble**: ~0.655
 
-**Note**: The synthetic nature of the dataset and the limited feature set explain the moderate performance. A real SDSS classifier with full spectra or image data would achieve >0.95 accuracy.
+| Model       | OOF Accuracy | Ensemble Weight |
+| :---------- | :----------- | :--------------- |
+| LightGBM    | 0.9680       | 0.3339           |
+| XGBoost     | 0.9670       | 0.3336           |
+| CatBoost    | 0.9637       | 0.3325           |
+| **Ensemble**| **~0.966**   | —                |
 
 ---
 
@@ -141,3 +183,4 @@ Issues and pull requests are welcome. If you find a bug or have a suggestion, pl
 ---
 
 **Happy classifying!** ✨
+```
